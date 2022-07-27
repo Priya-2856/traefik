@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   timeoutEndpoint:
-    image: yaman/timeout
+    image: priyaa221/timeout
     environment:
       PROTO: http
       PORT: 9000
