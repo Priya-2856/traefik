@@ -118,15 +118,6 @@ test-integration: build-dev-image
 	trap 'docker network rm traefik-test-network' EXIT; \
 	$(if $(IN_DOCKER),$(DOCKER_RUN_TRAEFIK_TEST),) ./script/make.sh generate binary test-integration
 
-## Pull all images for integration tests
-.PHONY: pull-images
-pull-images:
-	grep --no-filename -E '^\s+image:' ./integration/resources/compose/*.yml \
-		| awk '{print $$2}' \
-		| sort \
-		| uniq \
-		| xargs -P 6 -n 1 docker pull
-
 ## Validate code and docs
 .PHONY: validate-files
 validate-files: build-dev-image
