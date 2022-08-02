@@ -38,7 +38,7 @@ blocks:
           - env_var: ARCH
             values: [ "arm64", "amd64" ]
           commands:
-            - uname -m
+            - uname -a
             - touch webui/static/index.html
             - IN_DOCKER="" make binary
             - make test-integration
