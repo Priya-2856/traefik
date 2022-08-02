@@ -40,7 +40,7 @@ blocks:
           commands:
             - touch webui/static/index.html
             - IN_DOCKER="" make binary
-            - make test-integration
+            - CI=1 PRE_TARGET= TESTFLAGS="-check.f AccessLogSuite" make test-integration
             - df -h
       epilogue:
         always:
